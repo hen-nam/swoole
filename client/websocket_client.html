@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>websocket_client</title>
+</head>
+<body>
+<p>websocket_client</p>
+<script>
+    var ws = new WebSocket("ws://127.0.0.1:9504");
+
+    // 监听 WebSocket 连接打开事件
+    ws.onopen = function(evt) {
+        console.log("连接已打开");
+        // 向服务器发送消息
+        ws.send("客户端数据");
+    };
+
+    // 监听 WebSocket 消息事件
+    ws.onmessage = function(evt) {
+        console.log("消息已接收：" + evt.data);
+    };
+
+    // 监听 WebSocket 连接关闭事件
+    ws.onclose = function(evt) {
+        console.log("连接已关闭");
+    };
+
+    // 监听 WebSocket 错误发生事件
+    ws.onerror = function(evt, e) {
+        console.log("错误已发生: " + evt.data);
+    };
+</script>
+</body>
+</html>
